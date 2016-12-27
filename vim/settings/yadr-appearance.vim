@@ -13,10 +13,13 @@ if has("gui_running")
   set columns=190
 
   if has("gui_gtk2")
-    set guifont=Inconsolata\ XL\ 12,Inconsolata\ 15,Monaco\ 12
+    " set guifont=Inconsolata\ XL\ 11,Inconsolata\ 15,Monaco\ 12
+    " set guifont=Menlo\ for\ Powerline\ 10,Inconsolata\ 15,Monaco\ 12
+    set guifont=Hack\ 10
   else
     set guifont=Inconsolata\ XL:h17,Inconsolata:h20,Monaco:h17
   end
+  " set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 11
 else
   let g:CSApprox_loaded = 1
 
