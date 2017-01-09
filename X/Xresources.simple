@@ -1,0 +1,3 @@
+URxvt.font: xft:Ubuntu Mono:pixelsize=16
+URxvt.foreground: white
+URxvt.background: black

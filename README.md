@@ -1,3 +1,19 @@
+## Fork Notes
+**This is not a boilerplate repo** like the original. It is not 'clean' and contains multiple configurations i.e multiple colorscheme configs that I swap when I am bored :)
+
+That being said, some additions:
+* Modified Rakefile to add support for config files under .config folder (I am using Arch)
+* Spacemacs!
+* Neovim support
+* i3 configs (i3-gaps and i3blocks)
+* compton/termite/dunst configs (gruvbox by default)
+* X config files
+* base16-shell repo (commented out by default)
+* and multiple other minor changes (git log)
+
+*Some configs/colorschemes are taken from [/r/unixporn](https://www.reddit.com/r/unixporn). I add (or will add) credits to the creator wherever I can/remember*
+
+## Original Readme
      _     _           _
     | |   | |         | |
     | |___| |_____  __| | ____
@@ -200,7 +216,7 @@ of plugins above to learn more.
  * `gK` - Opens the documentation for the word under the cursor.
  * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
  * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
- 
+
 
 #### File Navigation
 

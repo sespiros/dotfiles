@@ -24,8 +24,16 @@ task :install => [:submodule_init, :submodules] do
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
   end
+  install_files(Dir.glob('X/*')) if want_to_install?('X config files')
+  install_files(Dir.glob('i3/*')) if want_to_install?('i3 config')
+  install_files(Dir.glob('config/base16-shell'), :config) if want_to_install?('base16-shell')
+  install_files(Dir.glob('config/compton.conf*'), :config) if want_to_install?('compton config')
+  install_files(Dir.glob('config/dunst'), :config) if want_to_install?('dunst config')
+  install_files(Dir.glob('config/i3'), :config) if want_to_install?('i3 config')
+  install_files(Dir.glob('config/termite'), :config) if want_to_install?('termite config')
 
   Rake::Task["install_prezto"].execute
+  Rake::Task["install_spacemacs"].execute
 
   install_fonts
 
@@ -39,6 +47,12 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+end
+
+task :install_spacemacs do
+  if want_to_install?('spacemacs & custom .spacemacs')
+    install_spacemacs
   end
 end
 
@@ -113,8 +127,8 @@ end
 
 task :default => 'install'
 
-
 private
+
 def run(cmd)
   puts "[Running] #{cmd}"
   `#{cmd}` unless ENV['DEBUG']
@@ -290,6 +304,15 @@ def install_prezto
   end
 end
 
+def install_spacemacs
+  puts
+  puts 'Installing spacemacs...'
+
+  run %{ ln -nfs "$HOME/.yadr/spacemacs.d" "$HOME/.emacs.d" }
+
+  install_files(Dir.glob('spacemacs'))
+end
+
 def want_to_install? (section)
   if ENV["ASK"]=="true"
     puts "Would you like to install configuration files for: #{section}? [y]es, [n]o"
@@ -303,7 +326,11 @@ def install_files(files, method = :symlink)
   files.each do |f|
     file = f.split('/').last
     source = "#{ENV["PWD"]}/#{f}"
-    target = "#{ENV["HOME"]}/.#{file}"
+    if method == :config
+      target = "#{ENV["HOME"]}/config/#{file}"
+    else
+      target = "#{ENV["HOME"]}/.#{file}"
+    end
 
     puts "======================#{file}=============================="
     puts "Source: #{source}"
@@ -314,7 +341,7 @@ def install_files(files, method = :symlink)
       run %{ mv "$HOME/.#{file}" "$HOME/.#{file}.backup" }
     end
 
-    if method == :symlink
+    if %i(symlink config).include? method
       run %{ ln -nfs "#{source}" "#{target}" }
     else
       run %{ cp -f "#{source}" "#{target}" }
