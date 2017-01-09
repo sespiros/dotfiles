@@ -36,6 +36,7 @@ task :install => [:submodule_init, :submodules] do
 
   Rake::Task["install_prezto"].execute
   Rake::Task["install_spacemacs"].execute
+  Rake::Task["install_neovim"].execute
 
   install_fonts
 
@@ -55,6 +56,12 @@ end
 task :install_spacemacs do
   if want_to_install?('spacemacs & custom .spacemacs')
     install_spacemacs
+  end
+end
+
+task :install_neovim do
+  if want_to_install?('neovim')
+    install_neovim
   end
 end
 
@@ -313,6 +320,21 @@ def install_spacemacs
   run %{ ln -nfs "$HOME/.yadr/spacemacs.d" "$HOME/.emacs.d" }
 
   install_files(Dir.glob('spacemacs'))
+end
+
+def install_neovim
+  puts
+  puts 'Installing neovim...'
+
+  source = "#{ENV["HOME"]}/.yadr/vim"
+  target = "#{ENV["HOME"]}/.config/nvim"
+
+  if File.exists?(target) && (!File.symlink?(target) || (File.symlink?(target) && File.readlink(target) != source))
+    puts "[Overwriting] #{target}...leaving original at #{target}.backup..."
+    run %{ mv "#{target}" "#{target}.backup" }
+  end
+
+  run %{ ln -nfs "#{source}" "#{target}" }
 end
 
 def want_to_install? (section)
