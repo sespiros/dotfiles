@@ -169,7 +169,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /home/sespiros/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec ~/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -177,10 +177,10 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym $mod+Ctrl+l exec /home/sespiros/.config/i3/lock.sh
+bindsym $mod+Ctrl+l exec ~/.config/i3/lock.sh
 
 exec --no-startup-id compton -bc -r 12 -l -3 -t -3 --shadow-exclude "class_g = 'i3-frame'"
-exec_always feh --bg-scale --randomize /home/sespiros/Pictures/wallpaper/*.jpg
+exec_always feh --bg-scale --randomize ~/Pictures/wallpaper/*.jpg
 exec --no-startup-id dropbox start
 # exec --no-startup-id nm-applet
 # exec_always chromium
