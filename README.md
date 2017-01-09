@@ -13,6 +13,10 @@ That being said, some additions:
 
 *Some configs/colorschemes are taken from [/r/unixporn](https://www.reddit.com/r/unixporn). I add (or will add) credits to the creator wherever I can/remember*
 
+```bash
+sh -c "`curl -fsSL https://raw.githubusercontent.com/sespiros/dotfiles/master/install.sh`" -s ask
+```
+
 ## Original Readme
      _     _           _
     | |   | |         | |
