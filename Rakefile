@@ -31,6 +31,8 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('config/dunst'), :config) if want_to_install?('dunst config')
   install_files(Dir.glob('config/i3'), :config) if want_to_install?('i3 config')
   install_files(Dir.glob('config/termite'), :config) if want_to_install?('termite config')
+  install_files(Dir.glob('myvim/*')) if want_to_install?("sespiros's vimrc after and before")
+  install_files(Dir.glob('myzsh/*')) if want_to_install?("sespiros's zshrc after and before")
 
   Rake::Task["install_prezto"].execute
   Rake::Task["install_spacemacs"].execute
