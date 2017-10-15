@@ -1,3 +1,7 @@
+[options]
+; font = Meslo LG S for Powerline 10
+font = Roboto Mono for Powerline 11
+
 [colors]
 # hard contrast: background = #1d2021
 background = #282828
