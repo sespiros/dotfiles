@@ -1,3 +1,10 @@
+Xft.dpi: 96
+Xft.autohint: 0
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: lcddefault
+Xft.hintstyle: hintsfull
+
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-light.xresources
 ! Description: Retro groove colorscheme generalized
@@ -36,39 +43,13 @@
 *color15: #3c3836
 
 !-------------------------------------------------------------------------------
-! Rofi color theme
-!
-! Based on the Gruvbox color scheme for Vim by morhetz
-! https://github.com/morhetz/gruvbox
-!
-! File: gruvbox-dark.theme
-! Desc: Gruvbox dark color theme for Rofi
-! Author: bardisty <b@bah.im>
-! Source: https://github.com/bardisty/gruvbox-rofi
-! Modified: Sat Oct 22 2016 03:11:40 PDT -0700
-!-------------------------------------------------------------------------------
-
-! Enable the extended coloring options
-rofi.color-enabled: true
-
-!                  bg       border   separator
-rofi.color-window: #282828, #a89984, #a89984
-
-!                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
-rofi.color-active: #d79921, #282828, #d79921, #fabd2f, #282828
-rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828
-
-rofi.separator-style:                solid
-
-! rofi.font: Ubuntu Mono derivative Powerline 12
-
-!-------------------------------------------------------------------------------
 ! URxvt settings
 ! Author: sespiros <sespiros@gmail.com>
 ! Modified: Tue Feb  7 23:58:32 EET 2017
 !-------------------------------------------------------------------------------
-URxvt.font: xft:Inconsolata for Powerline
+
+URxvt*font: xft:Iosevka:size=12
+! URxvt*font: xft:Inconsolata for Powerline
 URxvt*scrollBar: true
 URxvt*saveLines: 5000
 

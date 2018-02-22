@@ -1,13 +1,12 @@
-#!/bin/sh -e
+#!/bin/bash
 
-# Take a screenshot
-scrot /tmp/screen_locked.png
+cd "/home/sespiros/.config/i3/"
 
-# Pixellate it 10x
-mogrify -scale 10% -scale 1000% /tmp/screen_locked.png
+import -silent -window root lock.png;
+notify-send --urgency low "Locking..."
+# convert lock.png -scale 25% -blur 0x20 -scale 400% lock.png;
+convert lock.png -scale 10% -scale 1000% lock.png;
+composite -gravity center pad.png lock.png lock.png;
 
-# Lock screen displaying this image.
-i3lock -i /tmp/screen_locked.png
+i3lock -i lock.png --textcolor=eee8d5ff --ringcolor=07364295 --keyhlcolor=268bd295 --bshlcolor=dc322f95 --insidecolor=002b3695 --insidevercolor=268bd295 --ringvercolor=268bd295 --insidewrongcolor=dc322f95 --ringwrongcolor=dc322f95 --linecolor=07364295 --separatorcolor=07364295;
 
-# Turn the screen off after a delay.
-sleep 60; pgrep i3lock && xset dpms force off

@@ -47,10 +47,10 @@ bindsym $mod+d exec rofi -show drun -combi-modi
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -59,10 +59,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -71,10 +71,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+n split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -96,40 +96,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws10 "10: "
-
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# assign [class="URxvt"] $ws1
-# assign [class="chromium"] $ws2
-# assign [class="VirtualBox"] $ws4
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -137,28 +103,31 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+m exec --no-startup-id i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+Tab exec --no-startup-id i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Go To: '
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -183,53 +152,125 @@ bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+Ctrl+l exec ~/.config/i3/lock.sh
 
-exec --no-startup-id compton -bc -r 12 -l -3 -t -3 --shadow-exclude "class_g = 'i3-frame'"
-exec_always feh --bg-scale --randomize ~/Pictures/wallpaper/*.jpg
-exec --no-startup-id dropbox start
-# exec --no-startup-id nm-applet
-# exec_always chromium
-# exec_always urxvt
-exec --no-startup-id i3-msg 'workspace $ws1; exec termite; workspace $ws2; exec chromium'
-exec --no-startup-id redshift-gtk
+set $ws0 "0:"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:4"
+set $ws4 "4:5"
+set $ws5 "5:6"
+set $ws6 "6:7"
+set $ws7 "7:8"
+set $ws8 "8:9"
+set $ws9 "9:0"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws0
+bindsym $mod+2 workspace $ws1
+bindsym $mod+3 workspace $ws2
+bindsym $mod+4 workspace $ws3
+bindsym $mod+5 workspace $ws4
+bindsym $mod+6 workspace $ws5
+bindsym $mod+7 workspace $ws6
+bindsym $mod+8 workspace $ws7
+bindsym $mod+9 workspace $ws8
+bindsym $mod+0 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws0
+bindsym $mod+Shift+2 move container to workspace $ws1
+bindsym $mod+Shift+3 move container to workspace $ws2
+bindsym $mod+Shift+4 move container to workspace $ws3
+bindsym $mod+Shift+5 move container to workspace $ws4
+bindsym $mod+Shift+6 move container to workspace $ws5
+bindsym $mod+Shift+7 move container to workspace $ws6
+bindsym $mod+Shift+8 move container to workspace $ws7
+bindsym $mod+Shift+9 move container to workspace $ws8
+bindsym $mod+Shift+0 move container to workspace $ws9
 
 # workspace_auto_back_and_forth yes
 
 # Cosmetic stuff
-set $red   #c62828
-set $blue  #3f51b5
-set $green #4caf50
-set $white #ffffff
+set $color-primary      #ffb52a
+set $color-secondary    #000000
+set $color-tertiary     #204a87
+set $color-alert        #bd2c40
+set $color-light-gray   #acacac
+set $color-medium-gray  #777777
+set $color-dark-gray    #555555
+set $color-black        #000000
+set $color-white        #ffffff
 
-new_window 1pixel
-gaps inner 0
-gaps outer 0
-smart_gaps on
+# state                   border            backgr.          text                indicator           child_border
+client.focused            $color-secondary  $color-secondary $color-white        $color-medium-grey  $color-light-gray
+client.focused_inactive   $color-secondary  $color-secondary $color-light-gray   $color-black        $color-black
+client.unfocused          $color-black      $color-black     $color-dark-gray    $color-black        $color-black
+client.urgent             $color-alert      $color-alert     $color-black        $color-black        $color-alert
+client.placeholder        $color-black      $color-black     $color-white        $color-black        $color-black
+client.background         $color-black
+
+# new_window 1pixel
+# gaps outer 5
+# gaps inner 10
+# smart_gaps on
 hide_edge_borders smart
-# class                 border  backgr. text    indicator child_border
-client.focused          #444444 #555555 #aaaaaa #ffffff   #999999
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+set $borderwidth 1
+
+for_window [class="^.*"] border pixel $borderwidth
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  status_command i3status
-  tray_output primary
-  colors {
-      # Whole color settings
-      background #222222
-      statusline #ffffff
-      separator  #666666
+# bar {
+#   status_command i3status
+#   tray_output primary
+#   colors {
+#       # Whole color settings
+#       background #222222
+#       statusline #ffffff
+#       separator  #666666
+#
+#       # Type             border           background      font
+#       focused_workspace  $color-tertiary  $color-tertiary $color-white
+#       active_workspace   #333333          #5f676a         #ffffff
+#       inactive_workspace #222222          #222222         #888888
+#       urgent_workspace   $color-alert     $color-alert    #ffffff
+#       binding_mode       #2f343a          #900000         #ffffff
+#   }
+#   separator_symbol ⮁
+#   # font pango:Menlo for Powerline, Icons 11
+#   #strip_workspace_numbers yes
+# }
 
-      # Type             border  background font
-      focused_workspace  $blue $blue $white
-      active_workspace   #333333 #5f676a #ffffff
-      inactive_workspace #222222 #222222 #888888
-      urgent_workspace   $red $red #ffffff
-      binding_mode       #2f343a #900000 #ffffff
-  }
-  separator_symbol ⮁
-  # font pango:Menlo for Powerline, Icons 11
-  #strip_workspace_numbers yes
-}
+# assign [class="URxvt"] $ws1
+# assign [class="chromium"] $ws2
+# assign [class="VirtualBox"] $ws4
+
+# exec --no-startup-id nm-applet
+# exec_always chromium
+# exec_always urxvt
+
+# exec --no-startup-id compton -bc -r 12 -l -3 -t -3 --shadow-exclude "class_g = 'i3-frame'"
+exec_always feh --bg-scale --randomize ~/Pictures/wallpaper/*.jpg
+exec_always --no-startup-id killall polybar; polybar -r bottom
+exec --no-startup-id compton --daemon --config ~/.config/compton/compton.conf --log ~/.config/compton/log
+exec --no-startup-id dropbox start
+exec --no-startup-id i3-msg 'workspace $ws0; exec termite'
+exec --no-startup-id redshift-gtk
+
+exec --no-startup-id xrandr --output HDMI2 --mode 1680x1050 --output LVDS1 --off
 
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+set $mode_display Ext Screen (v) LVDS ON, (h) HDMI ON, (x) LVDS OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output LVDS1 --auto --left-of HDMI2 && polybar-msg cmd restart, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI2 --auto --right-of LVDS1 && polybar-msg cmd restart
+    bindsym x exec --no-startup-id xrandr --output LVDS1 --auto --off && polybar-msg cmd restart
+    bindsym y exec --no-startup-id xrandr --output HDMI2 --auto --off && polybar-msg cmd restart
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+p mode "$mode_display"

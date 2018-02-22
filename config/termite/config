@@ -1,5 +1,41 @@
 [options]
-font = Roboto Mono for Powerline 11
+;font = Terminus 8
+;font = Dina,11
+;font = tewi 9
+;font = Hack 10
+;font = GohuFont,Regular,10
+;font = Literation Mono 11
+;font = CamingoCode,Bold 11
+;font = Fantasque Sans Mono,Regular 11
+;font = DejaVu Sans Mono for Powerline, 10
+;font = Droid Sans Mono for Powerline 10
+;font = Source Code Pro for Powerline, 10
+;font = Inconsolata for Powerline,Regular 10
+;font = termsyn, 9
+;font = Terminess Powerline, 10
+;font = Ohsnap, Regular, 9
+;font = Fira Mono, 9
+;font = Literation Mono Powerline, 8
+;font = Literation Mono Powerline, 9
+;font = envypn, regular, 10
+;font = Inconsolata for Powerline, Regular 12
+;font = Roboto Mono for Powerline 11
+font = Iosevka Term 12
+
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = true
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollbak_lines =  10000
+search_wrap = true
+
+cursor_blink = on
+cursor_shape = block
 
 [colors]
 
