@@ -1,1 +1,1 @@
-/home/sespiros/.vimrc
+/home/sseimenis/.yadr/vimrc

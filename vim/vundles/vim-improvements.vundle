@@ -28,5 +28,4 @@ Bundle "goldfeld/ctrlr.vim"
 Bundle "editorconfig/editorconfig-vim"
 Bundle "bfredl/nvim-miniyank"
 Bundle "Shougo/deoplete.nvim"
-
-
+Bundle "zchee/deoplete-clang"
