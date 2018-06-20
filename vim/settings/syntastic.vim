@@ -25,3 +25,6 @@ endfunction
 if !exists("g:syntastic_ruby_exec")
     let g:syntastic_ruby_exec = s:FindRubyExec()
 endif
+
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'

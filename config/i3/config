@@ -32,8 +32,8 @@ font pango:Roboto Mono for Powerline 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec termite
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -201,9 +201,9 @@ set $color-black        #000000
 set $color-white        #ffffff
 
 # state                   border            backgr.          text                indicator           child_border
-client.focused            $color-secondary  $color-secondary $color-white        $color-medium-grey  $color-light-gray
-client.focused_inactive   $color-secondary  $color-secondary $color-light-gray   $color-black        $color-black
-client.unfocused          $color-black      $color-black     $color-dark-gray    $color-black        $color-black
+client.focused            $color-secondary  $color-tertiary  $color-white        $color-medium-grey  $color-light-gray
+client.focused_inactive   $color-secondary  $color-tertiary  $color-light-gray   $color-black        $color-black
+client.unfocused          $color-black      $color-black     $color-tertiary    $color-black        $color-black
 client.urgent             $color-alert      $color-alert     $color-black        $color-black        $color-alert
 client.placeholder        $color-black      $color-black     $color-white        $color-black        $color-black
 client.background         $color-black
@@ -248,7 +248,8 @@ bar {
 # exec_always chromium
 # exec_always urxvt
 
-exec_always feh --bg-scale --randomize ~/Pictures/wallpaper/*.jpg
+# exec_always feh --bg-scale --randomize ~/Pictures/wallpaper/*.jpg
+exec_always feh --bg-scale ~/Pictures/wallpaper/genuine.png
 exec --no-startup-id i3-msg 'workspace $ws0; exec i3-sensible-terminal; workspace $ws1; exec firefox'
 #exec_always --no-startup-id killall polybar; polybar -r bottom
 #exec --no-startup-id compton -bc -r 12 -l -3 -t -3 --shadow-exclude "class_g = 'i3-frame'"

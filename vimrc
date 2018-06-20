@@ -116,3 +116,5 @@ set smartcase       " ...unless we type a capital
 " ================ Custom Settings ========================
 set synmaxcol=120   " Limit syntax highlighting for long lines
 so ~/.yadr/vim/settings.vim
+set exrc
+set secure
