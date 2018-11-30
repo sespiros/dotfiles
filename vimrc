@@ -61,9 +61,9 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 
 " Auto indent pasted text
@@ -72,6 +72,9 @@ nnoremap P P=`]<C-o>
 
 filetype plugin on
 filetype indent on
+
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·

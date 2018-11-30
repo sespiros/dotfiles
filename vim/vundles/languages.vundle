@@ -1,6 +1,7 @@
 Bundle 'sheerun/vim-polyglot'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'honza/vim-snippets'
+Plugin 'plasticboy/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'nelstrom/vim-markdown-preview'

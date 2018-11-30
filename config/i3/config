@@ -39,8 +39,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec rofi -show drun -modi drun
-bindsym $mod+d exec "rofi -combi-modi window,drun,ssh -show combi -modi combi"
+bindsym $mod+d exec rofi -show drun -modi drun
+# bindsym $mod+d exec "rofi -combi-modi window,drun,ssh -show combi -modi combi"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -187,6 +187,9 @@ bindsym $mod+Shift+8 move container to workspace $ws7
 bindsym $mod+Shift+9 move container to workspace $ws8
 bindsym $mod+Shift+0 move container to workspace $ws9
 
+bindsym $mod+Shift+m move workspace to output right
+bindsym $mod+Shift+n move workspace to output left
+
 # workspace_auto_back_and_forth yes
 
 # Cosmetic stuff
@@ -257,7 +260,7 @@ exec --no-startup-id i3-msg 'workspace $ws0; exec i3-sensible-terminal; workspac
 #exec --no-startup-id dropbox start
 #exec --no-startup-id i3-msg 'workspace $ws0; exec termite
 #exec --no-startup-id redshift-gtk
-
+exec ~/.config/i3/startup.sh
 
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 

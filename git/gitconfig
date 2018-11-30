@@ -128,3 +128,5 @@
 [user]
 	name = Spyros Seimenis
 	email = sespiros@gmail.com
+[commit]
+	gpgsign = false
