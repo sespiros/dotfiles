@@ -15,8 +15,6 @@ task :install => [:submodule_init, :submodules] do
 
   # this has all the runcoms from this directory.
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
-  install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
-  install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
@@ -24,19 +22,11 @@ task :install => [:submodule_init, :submodules] do
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
   end
-  install_files(Dir.glob('X/*')) if want_to_install?('X config files')
-  install_files(Dir.glob('i3/*')) if want_to_install?('i3 config')
   install_files(Dir.glob('config/base16-shell'), :config) if want_to_install?('base16-shell')
-  install_files(Dir.glob('config/polybar'), :config) if want_to_install?('polybar config')
-  install_files(Dir.glob('config/compton'), :config) if want_to_install?('compton config')
-  install_files(Dir.glob('config/dunst'), :config) if want_to_install?('dunst config')
-  install_files(Dir.glob('config/i3'), :config) if want_to_install?('i3 config')
-  install_files(Dir.glob('config/termite'), :config) if want_to_install?('termite config')
   install_files(Dir.glob('myvim/*')) if want_to_install?("sespiros's vimrc after and before")
   install_files(Dir.glob('myzsh/*')) if want_to_install?("sespiros's zshrc after and before")
 
   Rake::Task["install_prezto"].execute
-  Rake::Task["install_spacemacs"].execute
   Rake::Task["install_neovim"].execute
 
   install_fonts
@@ -51,12 +41,6 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
-  end
-end
-
-task :install_spacemacs do
-  if want_to_install?('spacemacs & custom .spacemacs')
-    install_spacemacs
   end
 end
 
@@ -312,15 +296,6 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
-end
-
-def install_spacemacs
-  puts
-  puts 'Installing spacemacs...'
-
-  run %{ ln -nfs "$HOME/.yadr/spacemacs.d" "$HOME/.emacs.d" }
-
-  install_files(Dir.glob('spacemacs'))
 end
 
 def install_neovim
